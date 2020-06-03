@@ -1,14 +1,27 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
-import Home from "../views/Home.vue";
+import Layouts from "@/views/layouts/index.vue"
 
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
+    path: '/404',
+    component: () => import('@/views/404.vue'),
+  },
+  {
     path: "/",
     name: "Home",
-    component: Home
+    component: Layouts,
+    redirect: '/home',
+    children: [
+      {
+        path: 'home',
+        name: 'Home',
+        component: () => import('@/views/Home.vue'),
+        meta: { title: 'Home', icon: 'Home' }
+      }
+    ]
   }
   // {
   //   path: "/about",

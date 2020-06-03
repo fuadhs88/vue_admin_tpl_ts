@@ -1,19 +1,7 @@
 <template>
-  <div class="tile is-ancestor">
-    <div class="tile is-vertical">
-      <div class="tile is-parent notification is-danger">
-        Header
-      </div>
-      <div class="tile is-parent">
-        <div class="tile is-child notification is-3 has-background-white-b">
-          left
-          <button @click="test">TEst</button>
-        </div>
-        <div class="tile is-child notification box">
-          right <p> {{appName}}</p>
-        </div>
-      </div>
-    </div>
+  <div>
+    <button @click="test">ttt</button>
+    Home - {{aaa}}-{{appName}}
   </div>
 </template>
 
