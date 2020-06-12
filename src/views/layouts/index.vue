@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div>
     <nav class="navbar has-background-success" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <a class="navbar-item" href="/">
@@ -15,7 +15,7 @@
     </nav>
     <div class="columns is-gapless is-mobile">
       <!-- is-narrow  -->
-      <div class="column is-narrow-mobile  is-2-desktop has-background-warning">
+      <div class="column is-narrow-mobile is-2-desktop has-background-warning">
         Left
       </div>
       <div class="column has-background-primary">
@@ -24,7 +24,7 @@
     </div>
   </div>
 </template>
-<script>  
+<script>
 export default {
   name: 'AppMain',
   computed: {
