@@ -1,5 +1,5 @@
 <template>
-  <ve-line :data="chartData" height="20rem"></ve-line>
+  <ve-line :data="chartData" height="20rem" width="auto"></ve-line>
 </template>
 
 <script>
