@@ -1,28 +1,32 @@
 <template>
-  <div>
+  <div class="">
+    <div class="columns" id="chart">
+      <div class="column">
+        <chart />
+      </div>
+      <div class="column">
+        <bchart />
+      </div>
+    </div>
     <button @click="test">ttt</button>
     Home - {{ aaa }}-{{ appName }}
-    <table>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>2</td>
-          <td>3</td>
-        </tr>
-      </tbody>
-    </table>
   </div>
 </template>
-
+<style lang="stylus" scoped></style>
 <script>
 import { createNamespacedHelpers } from 'vuex'
 import { mapGetters } from 'vuex'
+import bchart from '@/views/Home/b-chart'
+import chart from '@/views/Home/chart'
 const { mapActions } = createNamespacedHelpers('app')
 export default {
-  components: {},
+  components: {
+    chart,
+    bchart
+  },
   data: () => {
     return {
-      aaa: 'fffffff'
+      aaa: 'test'
     }
   },
   created: () => {

@@ -20,7 +20,7 @@ service.interceptors.request.use(
       // ['X-Token'] is a custom headers key
       // please modify it according to the actual situation
       // config.headers['X-Token'] = getToken()
-    //   config.headers.token = getToken()
+      //   config.headers.token = getToken()
     }
     return config
   },
@@ -48,27 +48,27 @@ service.interceptors.response.use(
   },
   async error => {
     console.error('err' + error) // for debug
-      if (error.response && error.response.status === 401) {
-        console.log("request Err 401.")
-    //   if (window.loginExpiredTip) {
-    //     window.loginExpiredTip.close()
-    //     window.loginExpiredTip = null
-    //   }
-    //   window.loginExpiredTip = Notification({
-    //     type: 'warning',
-    //     title: '提示',
-    //     message: '身份令牌已失效，请重新登录'
-    //   })
-    //   store.dispatch('user/resetToken').then(() => {
-    //     location.reload()
-    //   })
+    if (error.response && error.response.status === 401) {
+      console.log('request Err 401.')
+      //   if (window.loginExpiredTip) {
+      //     window.loginExpiredTip.close()
+      //     window.loginExpiredTip = null
+      //   }
+      //   window.loginExpiredTip = Notification({
+      //     type: 'warning',
+      //     title: '提示',
+      //     message: '身份令牌已失效，请重新登录'
+      //   })
+      //   store.dispatch('user/resetToken').then(() => {
+      //     location.reload()
+      //   })
     } else {
-        console.log("request Err.")
-    //   Notification({
-    //     type: 'error',
-    //     title: '请求出错',
-    //     message: error.response.data && error.response.data.message ? error.response.data.message : error.message
-    //   })
+      console.log('request Err.')
+      //   Notification({
+      //     type: 'error',
+      //     title: '请求出错',
+      //     message: error.response.data && error.response.data.message ? error.response.data.message : error.message
+      //   })
     }
     return Promise.reject(error)
   }

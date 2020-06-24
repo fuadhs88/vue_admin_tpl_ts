@@ -1,19 +1,19 @@
-import Vue from "vue";
-import Vuex from "vuex";
-import app from "./modules/app";
-import getters from "./getters";
-import { AppState } from "./modules/app";
+import Vue from 'vue'
+import Vuex from 'vuex'
+import app from './modules/app'
+import getters from './getters'
+import { AppState } from './modules/app'
 
 export interface State {
-  app: AppState;
+  app: AppState
 }
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 const store = new Vuex.Store({
-  strict: process.env.NODE_ENV !== "production",
+  strict: process.env.NODE_ENV !== 'production',
   modules: {
     app: app
   },
   getters
-});
-export default store;
+})
+export default store
