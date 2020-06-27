@@ -1,8 +1,8 @@
 <template>
-  <div class="layout_main is-paddingless is-marginless">
+  <div class="layout_main">
     <!-- left -->
     <div class="left is-hidden-mobile">
-      <nav class="box account-info ">
+      <nav class="box account-info nav">
         Admin Info
       </nav>
       <div class="box section menus ">
@@ -10,8 +10,8 @@
       </div>
     </div>
     <!-- right -->
-    <div class="right is-size-1-mobile">
-      <nav class="box level header is-mobile">
+    <div class="right">
+      <nav class="box level header is-mobile nav">
         <!-- Left side -->
         <div class="level-left">
           <div class="level-item">
@@ -21,27 +21,18 @@
           </div>
           <div class="level-item">
             <div class="field has-addons">
-              <p class="control">
-                <b-field>
-                  <b-input placeholder="Search" type="Search"></b-input>
-                </b-field>
-              </p>
-              <p class="control">
-                <button class="button">
-                  Search
-                </button>
-              </p>
+              <span class="tag is-black">Home</span>
             </div>
           </div>
         </div>
 
         <!-- Right side -->
         <div class="level-right is-hidden-mobile">
-          <p class="level-item"><strong>X</strong></p>
+          <p class="level-item"><strong>Action</strong></p>
           <p class="level-item"><a>X</a></p>
           <p class="level-item"><a>X</a></p>
           <p class="level-item"><a>X</a></p>
-          <p class="level-item"><a class="button is-small is-success">LogOut</a></p>
+          <p class="level-item"><a class="button is-small is-success">登出</a></p>
         </div>
       </nav>
       <div class="box contents">
@@ -50,42 +41,44 @@
     </div>
   </div>
 </template>
-<style>
+<style lang="stylus" scoped>
+.box:not(:last-child){
+  margin-bottom: 0.5rem;
+}
 .left {
-  width: 21vw;
-  padding: 5px;
+  width: 25vw;
   height: 100vh;
-  /* border: 1px sandybrown solid; */
+  padding: 5px;
+  background-color: #484147;
 }
 .account-info {
   height: 4rem;
 }
 .menus {
-  margin-top: 0;
-  height: 100%;
   overflow: scroll;
+  height: calc(100% - 4.5rem);
 }
 .right {
   width: 100%;
-  padding: 5px;
   height: 100vh;
-  /* border: 1px sandybrown solid; */
+  padding: 5px;
+  background-color: #dadada;
 }
 .header {
-  height: 4rem;
-  /* border: 1px greenyellow solid; */
+  height: 3rem;
 }
 .contents {
-  height: 100%;
   overflow: scroll;
-  /* border: 1px red solid; */
+  height: calc(100% - 3.5rem);
 }
 .layout_main {
-  /* border: 1px black solid; */
+  display: -webkit-flex;
   display: flex;
-  float: left;
-  height: 100%;
   width: 100%;
+  height: 100%;
+}
+.box {
+  border: 2px solid #ffdd57;
 }
 </style>
 <script>
