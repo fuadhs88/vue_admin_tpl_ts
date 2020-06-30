@@ -1,51 +1,36 @@
 <template>
   <b-menu>
-    <b-menu-list label="Menu">
-      <b-menu-item icon="information-outline" label="Info"></b-menu-item>
-      <b-menu-item icon="account" label="My Account" expanded>
-        <b-menu-item label="Account data" :active="isActive"></b-menu-item>
-        <b-menu-item label="Addresses"></b-menu-item>
-      </b-menu-item>
-    </b-menu-list>
-    <b-menu-list label="Actions">
-      <b-menu-item label="Logout"></b-menu-item>
-    </b-menu-list>
-    <b-menu-list label="Actions">
-      <b-menu-item label="Logout"></b-menu-item>
-    </b-menu-list>
-    <b-menu-list label="Actions">
-      <b-menu-item label="Logout"></b-menu-item>
-    </b-menu-list>
-    <b-menu-list label="Actions">
-      <b-menu-item label="Logout"></b-menu-item>
-    </b-menu-list>
-    <b-menu-list label="Actions">
-      <b-menu-item label="Logout"></b-menu-item>
-    </b-menu-list>
-    <b-menu-list label="Actions">
-      <b-menu-item label="Logout"></b-menu-item>
-    </b-menu-list>
-    <b-menu-list label="Actions">
-      <b-menu-item label="Logout"></b-menu-item>
-    </b-menu-list>
-    <b-menu-list label="Actions">
-      <b-menu-item label="Logout"></b-menu-item>
-    </b-menu-list>
-    <b-menu-list label="Actions">
-      <b-menu-item label="Logout"></b-menu-item>
-    </b-menu-list>
-    <b-menu-list label="Actions">
-      <b-menu-item label="Logout"></b-menu-item>
-    </b-menu-list>
+    <div v-for="(item, index) in appMenus" :key="index">
+      <b-menu-list :label="item.name">
+        <div v-for="(fv, fk) in item.children" :key="fk">
+          <router-link :to="fv.path">
+            <b-menu-item :label="fv.name" :icon="fv.meta.ico" :active="isActive(fv.path)" expanded></b-menu-item>
+          </router-link>
+        </div>
+      </b-menu-list>
+    </div>
   </b-menu>
 </template>
 
 <script>
+import { createNamespacedHelpers } from 'vuex'
+const { mapActions } = createNamespacedHelpers('menus')
+import { mapGetters } from 'vuex'
 export default {
   data() {
-    return {
-      isActive: true
-    }
+    return {}
+  },
+  methods: {
+    isActive(path) {
+      return path == this.currentRoute
+    },
+    ...mapActions(['getMenus'])
+  },
+  computed: {
+    currentRoute() {
+      return this.$route.path
+    },
+    ...mapGetters(['appMenus', 'appName', 'appSS'])
   }
 }
 </script>

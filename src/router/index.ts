@@ -1,6 +1,7 @@
 import Layouts from '@/views/layouts/main.vue'
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
+
 Vue.use(VueRouter)
 
 const routes: Array<RouteConfig> = [
@@ -9,30 +10,32 @@ const routes: Array<RouteConfig> = [
     component: () => import('@/views/404.vue')
   },
   {
+    path: '/auth/login',
+    name: 'Login',
+    component: () => import('@/views/Auth/Login.vue')
+  },
+  {
     path: '/',
-    name: 'Home',
+    redirect: '/admin/home/index'
+  },
+  {
+    path: '/admin',
+    redirect: '/admin/home/index'
+  },
+  {
+    path: '/admin/home',
+    name: 'Admin',
     component: Layouts,
-    redirect: '/home',
+    redirect: '/admin/home/index',
     children: [
       {
-        path: 'home',
-        name: 'Home',
+        path: 'index',
         component: () => import('@/views/Home/Index.vue'),
-        meta: { title: '首页', icon: 'Home' }
+        meta: { title: '首页', icon: 'Home', requireAuth: false }
       }
     ]
   }
-  // {
-  //   path: "/about",
-  //   name: "About",
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () =>
-  //     import(/* webpackChunkName: "about" */ "../views/About.vue")
-  // }
 ]
-
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,

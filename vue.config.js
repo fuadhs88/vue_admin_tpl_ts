@@ -25,7 +25,7 @@ module.exports = {
    * In most cases please use '/' !!!
    * Detail: https://cli.vuejs.org/config/#publicpath
    */
-  publicPath: './',
+  publicPath: '/',
   outputDir: 'dist',
   assetsDir: 'static',
   lintOnSave: process.env.NODE_ENV === 'development',
@@ -38,8 +38,9 @@ module.exports = {
       errors: true
     },
     proxy: {
-      '/api': {
+      '/sys': {
         target: process.env.VUE_APP_API_HOST,
+        pathRewrite: { '^/sys': '' },
         ws: false,
         changeOrigin: true
       }

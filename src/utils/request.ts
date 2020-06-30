@@ -14,12 +14,13 @@ const service = axios.create({
 service.interceptors.request.use(
   config => {
     // do something before request is sent
-
-    if (store.getters.token) {
+    //TODO 优化请求头
+    if (store.getters.token || true) {
       // let each request carry token
       // ['X-Token'] is a custom headers key
       // please modify it according to the actual situation
-      // config.headers['X-Token'] = getToken()
+      config.headers['Authorization'] =
+        'Bearer eyJ0eXAiOiJqd3QifQ.eyJzdWIiOiIxIiwiaXNzIjoiaHR0cDpcL1wvOiIsImV4cCI6MTU5MzYzMTg5NCwiaWF0IjoxNTkzNDE1ODk0LCJuYmYiOjE1OTM0MTU4OTQsInVpZCI6MSwianRpIjoiNzZiYmQ4N2FjMmQ0NjI0Y2IwZGUzNGMzYjM2MTU3MTcifQ.JDJ5JDEwJEhHeEd4MDlyd3JmVU90Q0s3T3FmYk9VNlV6MzhGbWdWVkltUmVsL2czSHBITGtJZk9HN1ky'
       //   config.headers.token = getToken()
     }
     return config

@@ -2,12 +2,18 @@ import { ActionContext } from 'vuex'
 import { State } from '..'
 import * as userApi from '@/api/user'
 
+export interface LoginState {
+  id: number
+  name: string
+  age: number
+}
 export interface AppState {
   name: string
+  loginState: LoginState
 }
-
 const state: AppState = {
-  name: '--'
+  name: '--',
+  loginState: { id: 0, age: 0, name: '' }
 }
 
 const mutations = {
@@ -29,17 +35,6 @@ const actions = {
     userApi.getInfo(userInfoReq).then(resp => {
       context.commit('SET_NAME', resp.data.name)
     })
-
-    // return new Promise((resolve, reject) => {
-    //   try {
-    //     setTimeout(() => {
-
-    //       resolve();
-    //     }, 1000);
-    //   } catch (e) {
-    //     reject(e);
-    //   }
-    // });
   }
 }
 

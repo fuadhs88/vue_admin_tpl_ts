@@ -3,7 +3,18 @@
     <!-- left -->
     <div class="left is-hidden-mobile">
       <nav class="box account-info nav">
-        Admin Info
+        <div class="level">
+          <div class="level-left">
+            <div class="left-item">
+              <b-taglist attached>
+                <b-tag type="is-warn">
+                  <b-icon icon="account" type="is-success"> </b-icon>
+                </b-tag>
+                <b-tag type="is-dark">{{ roleName }}</b-tag>
+              </b-taglist>
+            </div>
+          </div>
+        </div>
       </nav>
       <div class="box section menus ">
         <Menu></Menu>
@@ -83,6 +94,7 @@
 </style>
 <script>
 import menu from '@/views/layouts/menu'
+import { mapGetters } from 'vuex'
 export default {
   data() {
     return {
@@ -98,7 +110,8 @@ export default {
   computed: {
     key() {
       return this.$route.path
-    }
+    },
+    ...mapGetters(['roleName'])
   },
   methods: {
     clickMe() {

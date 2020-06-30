@@ -1,13 +1,5 @@
 <template>
   <div>
-    <div class="columns" id="chart">
-      <div class="column">
-        <chart />
-      </div>
-      <div class="column">
-        <bchart />
-      </div>
-    </div>
     <table-demo />
   </div>
 </template>
@@ -21,24 +13,17 @@
 <script>
 import { createNamespacedHelpers } from 'vuex'
 import { mapGetters } from 'vuex'
-import bchart from '@/views/Home/Bchart'
-import chart from '@/views/Home/Chart'
 import tableDemo from '@/views/Home/Table'
 const { mapActions } = createNamespacedHelpers('app')
 export default {
   components: {
-    chart,
-    bchart,
     tableDemo
   },
   data: () => {
-    return {
-      aaa: 'test'
-    }
+    return {}
   },
   methods: {
     test() {
-      console.log(this.appMenus)
       this.setName('new Name').then(() => console.log(this.appName))
     },
     ...mapActions(['setName'])
